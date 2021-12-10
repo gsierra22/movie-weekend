@@ -3,7 +3,7 @@ import './App.css';
 import MovieList from '../MovieList/MovieList'
 import Details from '../Details/Details';
 
-function App() {
+function App(props) {
   return (
     <div className="App">
       <h1>The Movies Saga!</h1>
