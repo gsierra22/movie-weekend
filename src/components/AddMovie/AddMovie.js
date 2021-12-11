@@ -14,9 +14,9 @@ function AddMovie() {
     {
       id:'',
       title:'',
-      image:'',
+      poster:'',
       description:'',
-      genre:''
+      name:''
     });
 
     const handleNewMovie = (event) => {
@@ -28,7 +28,7 @@ function AddMovie() {
   const handleNewGenre = (event) => {
     console.log('event happened');
     //Similar to in redux -- we dont want to get rid of the id field when we update name
-    setMovie({...newMovie, genre: event.target.value})
+    setMovie({...newMovie, name: event.target.value})
 }
 
 const handleNewDescription = (event) => {
@@ -40,13 +40,16 @@ const handleNewDescription = (event) => {
 const handleNewImage = (event) => {
   console.log('event happened');
   //Similar to in redux -- we dont want to get rid of the id field when we update name
-  setMovie({...newMovie, image: event.target.value})
+  setMovie({...newMovie, poster: event.target.value})
 }
   const addNewMovie = event => {
-    event.preventDefault();
     dispatch({ type: 'ADD_MOVIE', payload: newMovie });
     //updates the next plant to have a new id
-    setMovie({id:newMovie.id, title: ''});
+}
+
+const addNewGenre = event => {
+  dispatch({ type: 'ADD_GENRE', payload: newMovie });
+  //updates the next plant to have a new id
 }
 
   return (
@@ -55,7 +58,7 @@ const handleNewImage = (event) => {
       <pre>{JSON.stringify(newMovie)}</pre>
             <form onSubmit={addNewMovie}>
                 <input type='text' value={newMovie.title} onChange={handleNewMovie} />
-                <select value={newMovie.genre} onChange={handleNewGenre}>
+                <select value={newMovie.name} onChange={handleNewGenre}>
                   <option>Adventure</option>
                   <option>Animated</option>
                   <option>Biographical</option>
@@ -71,7 +74,8 @@ const handleNewImage = (event) => {
                   <option>Superhero</option>
                 </select>
                 <input type='text' value={newMovie.description} onChange={handleNewDescription} />
-                <input type='url' value={newMovie.image} onChange={handleNewImage} />
+                <input type='url' value={newMovie.poster} onChange={handleNewImage} />
+                <input type='submit' value='Add New Movie' />
             </form>
       <button ><Link to="/">Back</Link></button>
     </div>
