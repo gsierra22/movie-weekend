@@ -15,6 +15,7 @@ function MovieList() {
     return (
         <main>
             <h1>MovieList</h1>
+            <button ><Link to="/AddMovie">Add Movie</Link></button>
             <section className="movies">
                 {movies.map(movie => {
                     
@@ -29,7 +30,6 @@ function MovieList() {
                                 }
                             } )
                     }
-                    
                     
                     
                     return (
