@@ -12,12 +12,12 @@ function AddMovie() {
   //Initial state is an OBJECT, with keys id and name
   let [newMovie, setMovie] = useState(
     {
-      id:'',
       title:'',
       poster:'',
       description:'',
-      name:''
+      movid_id: ''
     });
+
 
     const handleNewMovie = (event) => {
       console.log('event happened');
@@ -28,7 +28,7 @@ function AddMovie() {
   const handleNewGenre = (event) => {
     console.log('event happened');
     //Similar to in redux -- we dont want to get rid of the id field when we update name
-    setMovie({...newMovie, name: event.target.value})
+    setMovie ({...newMovie, movid_id: event.target.value})
 }
 
 const handleNewDescription = (event) => {
@@ -47,34 +47,29 @@ const handleNewImage = (event) => {
     //updates the next plant to have a new id
 }
 
-const addNewGenre = event => {
-  dispatch({ type: 'ADD_GENRE', payload: newMovie });
-  //updates the next plant to have a new id
-}
-
   return (
     <div>
       <h1>AddMovie</h1>
       <pre>{JSON.stringify(newMovie)}</pre>
             <form onSubmit={addNewMovie}>
                 <input type='text' value={newMovie.title} onChange={handleNewMovie} />
-                <select value={newMovie.name} onChange={handleNewGenre}>
-                  <option>Adventure</option>
-                  <option>Animated</option>
-                  <option>Biographical</option>
-                  <option>Comedy</option>
-                  <option>Disaster</option>
-                  <option>Drama</option>
-                  <option>Epic</option>
-                  <option>Fanstasy</option>
-                  <option>Musical</option>
-                  <option>Romantic</option>
-                  <option>Science Fiction</option>
-                  <option>Space-Opera</option>
-                  <option>Superhero</option>
+                <select value={newMovie.movie_id} onChange={handleNewGenre}>
+                  <option value={1}>Adventure</option>
+                  <option value={2}>Animated</option>
+                  <option value={3}>Biographical</option>
+                  <option value={4}>Comedy</option>
+                  <option value={5}>Disaster</option>
+                  <option value={6}>Drama</option>
+                  <option value={7}>Epic</option>
+                  <option value={8}>Fanstasy</option>
+                  <option value={9}>Musical</option>
+                  <option value={10}>Romantic</option>
+                  <option value={11}>Science Fiction</option>
+                  <option value={12}>Space-Opera</option>
+                  <option value={13}>Superhero</option>
                 </select>
                 <input type='text' value={newMovie.description} onChange={handleNewDescription} />
-                <input type='url' value={newMovie.poster} onChange={handleNewImage} />
+                <input type='text' value={newMovie.poster} onChange={handleNewImage} />
                 <input type='submit' value='Add New Movie' />
             </form>
       <button ><Link to="/">Back</Link></button>

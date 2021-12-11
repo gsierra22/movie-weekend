@@ -16,24 +16,14 @@ function* rootSaga() {
     yield takeEvery('FETCH_MOVIES', fetchAllMovies);
     yield takeEvery('FETCH_GENRES', fetchAllGenres)
     yield takeEvery( 'ADD_MOVIE', postNewMovie );;
-    yield takeEvery( 'ADD_GENRE', postNewGenre );;
 }
 
-function *postNewGenre( action ){
-    console.log( 'in *postSaga:', action );
-    try {
-      const response = yield axios.post('/api/movie', action.payload);
-      yield put({type: 'FETCH_GENRES', payload: response.data})
-    } catch (err) {
-        console.log('error:', err);
-    }
-  }
 
 function *postNewMovie( action ){
     console.log( 'in *postSaga:', action );
     try {
       const response = yield axios.post('/api/movie', action.payload);
-      yield put({type: 'FETCH_MOVIES', payload: response.data})
+      yield put({type: 'SET_MOVIES', payload: response.data})
     } catch (err) {
         console.log('error:', err);
     }
