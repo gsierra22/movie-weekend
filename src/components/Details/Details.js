@@ -17,10 +17,12 @@ function Details(props) {
   return (
     <div>
       <h1>Details</h1>
-      <button >
-            <Link to="/">Back</Link></button>
             <div>{movieDetails.id}</div>
             <div>{movieDetails.title}</div>
+            <img src={movieDetails.poster}/>
+            <div>{movieDetails.description}</div>
+            <button ><Link to="/">Back</Link></button>
+
 
     
     </div>
