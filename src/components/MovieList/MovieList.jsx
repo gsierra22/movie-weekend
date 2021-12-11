@@ -17,10 +17,25 @@ function MovieList() {
             <h1>MovieList</h1>
             <section className="movies">
                 {movies.map(movie => {
+                    
+                    const setOneMovie = () => { 
+                        dispatch( {
+                            type: 'SET_MOVIE_DETAILS', 
+                            payload:{
+                                id: movie.id, 
+                                title: movie.title, 
+                                poster:movie.poster, 
+                                description:movie.description 
+                                }
+                            } )
+                    }
+                    
+                    
+                    
                     return (
                         <div key={movie.id} >
                             <h3>{movie.title}</h3>
-                            <Link to='/details'><img src={movie.poster} alt={movie.title} /></Link>
+                            <Link to='/details'><img src={movie.poster} alt={movie.title} onClick={setOneMovie}/></Link>
                         </div>
                     );
                 })}
