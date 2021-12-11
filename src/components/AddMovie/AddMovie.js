@@ -24,6 +24,24 @@ function AddMovie() {
       //Similar to in redux -- we dont want to get rid of the id field when we update name
       setMovie({...newMovie, title: event.target.value})
   }
+
+  const handleNewGenre = (event) => {
+    console.log('event happened');
+    //Similar to in redux -- we dont want to get rid of the id field when we update name
+    setMovie({...newMovie, genre: event.target.value})
+}
+
+const handleNewDescription = (event) => {
+  console.log('event happened');
+  //Similar to in redux -- we dont want to get rid of the id field when we update name
+  setMovie({...newMovie, description: event.target.value})
+}
+
+const handleNewImage = (event) => {
+  console.log('event happened');
+  //Similar to in redux -- we dont want to get rid of the id field when we update name
+  setMovie({...newMovie, image: event.target.value})
+}
   const addNewMovie = event => {
     event.preventDefault();
     dispatch({ type: 'ADD_MOVIE', payload: newMovie });
@@ -37,7 +55,7 @@ function AddMovie() {
       <pre>{JSON.stringify(newMovie)}</pre>
             <form onSubmit={addNewMovie}>
                 <input type='text' value={newMovie.title} onChange={handleNewMovie} />
-                <select value={newMovie.title} onChange={handleNewMovie}>
+                <select value={newMovie.genre} onChange={handleNewGenre}>
                   <option>Adventure</option>
                   <option>Animated</option>
                   <option>Biographical</option>
@@ -52,8 +70,8 @@ function AddMovie() {
                   <option>Space-Opera</option>
                   <option>Superhero</option>
                 </select>
-                <input type='text' value={newMovie.description} onChange={handleNewMovie} />
-                <input type='url' value={newMovie.image} onChange={handleNewMovie} />
+                <input type='text' value={newMovie.description} onChange={handleNewDescription} />
+                <input type='url' value={newMovie.image} onChange={handleNewImage} />
             </form>
       <button ><Link to="/">Back</Link></button>
     </div>
