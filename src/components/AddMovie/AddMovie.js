@@ -15,7 +15,7 @@ function AddMovie() {
       title:'',
       poster:'',
       description:'',
-      movid_id: ''
+      genre: ''
     });
 
 
@@ -28,7 +28,7 @@ function AddMovie() {
   const handleNewGenre = (event) => {
     console.log('event happened');
     //Similar to in redux -- we dont want to get rid of the id field when we update name
-    setMovie ({...newMovie, movid_id: event.target.value})
+    setMovie ({...newMovie, genre: event.target.value})
 }
 
 const handleNewDescription = (event) => {
@@ -53,7 +53,7 @@ const handleNewImage = (event) => {
       <pre>{JSON.stringify(newMovie)}</pre>
             <form onSubmit={addNewMovie}>
                 <input type='text' value={newMovie.title} onChange={handleNewMovie} />
-                <select value={newMovie.movie_id} onChange={handleNewGenre}>
+                <select value={newMovie.genre} onChange={( event )=>handleNewGenre( event )}>
                   <option value={1}>Adventure</option>
                   <option value={2}>Animated</option>
                   <option value={3}>Biographical</option>
@@ -69,8 +69,8 @@ const handleNewImage = (event) => {
                   <option value={13}>Superhero</option>
                 </select>
                 <input type='text' value={newMovie.description} onChange={handleNewDescription} />
-                <input type='text' value={newMovie.poster} onChange={handleNewImage} />
-                <input type='submit' value='Add New Movie' />
+                <input type='text' className="image" value={newMovie.poster} onChange={handleNewImage} />
+                <Link to="/"><button onClick={addNewMovie}>Save</button></Link>
             </form>
       <button ><Link to="/">Back</Link></button>
     </div>

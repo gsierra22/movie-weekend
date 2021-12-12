@@ -1,5 +1,6 @@
 import {useDispatch, useSelector} from 'react-redux';
 import {useState, useEffect } from 'react';
+import './Details.css'
 import {HashRouter as Router, Route, Link} from 'react-router-dom';
 
 
@@ -35,7 +36,7 @@ function Details(props) {
             <div>
             <div>{movieDetails.id}</div>
             <div>{movieDetails.title}</div>
-            <img src={movieDetails.poster}/>
+            <img className="image" src={movieDetails.poster}/>
             <div>{movieDetails.description}</div>
 
             </div>

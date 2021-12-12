@@ -35,7 +35,7 @@ function MovieList() {
                     return (
                         <div key={movie.id} >
                             <h3>{movie.title}</h3>
-                            <Link to='/details'><img src={movie.poster} alt={movie.title} onClick={setOneMovie}/></Link>
+                            <Link to='/details'><img className="image" src={movie.poster} alt={movie.title} onClick={setOneMovie}/></Link>
                         </div>
                     );
                 })}
