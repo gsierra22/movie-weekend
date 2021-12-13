@@ -15,8 +15,12 @@ function AddMovie() {
       title:'',
       poster:'',
       description:'',
-      genre: ''
+      genre_id: 0
     });
+
+    const addNewMovie = event => {
+      dispatch({ type: 'ADD_MOVIE', payload: newMovie });
+  }
 
 
     const handleNewMovie = (event) => {
@@ -28,7 +32,7 @@ function AddMovie() {
   const handleNewGenre = (event) => {
     console.log('event happened');
     //Similar to in redux -- we dont want to get rid of the id field when we update name
-    setMovie ({...newMovie, genre: event.target.value})
+    setMovie ({...newMovie, genre_id: Number(event.target.value)})
 }
 
 const handleNewDescription = (event) => {
@@ -42,18 +46,18 @@ const handleNewImage = (event) => {
   //Similar to in redux -- we dont want to get rid of the id field when we update name
   setMovie({...newMovie, poster: event.target.value})
 }
-  const addNewMovie = event => {
-    dispatch({ type: 'ADD_MOVIE', payload: newMovie });
-    //updates the next plant to have a new id
-}
+
+
 
   return (
     <div>
       <h1>AddMovie</h1>
       <pre>{JSON.stringify(newMovie)}</pre>
             <form onSubmit={addNewMovie}>
-                <input type='text' value={newMovie.title} onChange={handleNewMovie} />
-                <select value={newMovie.genre} onChange={( event )=>handleNewGenre( event )}>
+              <label>Enter Movie Title</label>
+                <input type='text' placeholder='Title' value={newMovie.title} onChange={handleNewMovie} />
+                <label>Enter Movie Genre</label>
+                <select value={newMovie.genre_id} placeholder='Genre' onChange={( event )=>handleNewGenre( event )}>
                   <option value={1}>Adventure</option>
                   <option value={2}>Animated</option>
                   <option value={3}>Biographical</option>
@@ -68,8 +72,10 @@ const handleNewImage = (event) => {
                   <option value={12}>Space-Opera</option>
                   <option value={13}>Superhero</option>
                 </select>
-                <input type='text' value={newMovie.description} onChange={handleNewDescription} />
-                <input type='text' className="image" value={newMovie.poster} onChange={handleNewImage} />
+                <label>Enter Movie Description</label>
+                <input type='text' placeholder='Description' value={newMovie.description} onChange={handleNewDescription} />
+                <label>Enter Movie Poster Url</label>
+                <input type='text' className="image" placeholder='Poster' value={newMovie.poster} onChange={handleNewImage} />
                 <Link to="/"><button onClick={addNewMovie}>Save</button></Link>
             </form>
       <button ><Link to="/">Back</Link></button>

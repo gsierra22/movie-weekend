@@ -27,7 +27,7 @@ function Details(props) {
         {genres.map(genre => {
           return (
           <div>
-            <div>{genre.name}</div>
+            <div>{genre_id.id}</div>
             </div>
             );
             })}
